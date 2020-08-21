@@ -1,4 +1,4 @@
-package com.picpay.desafio.android
+package com.picpay.desafio.android.presentation
 
 import android.view.View
 import android.widget.ProgressBar
@@ -8,6 +8,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.picpay.desafio.android.data.remote.api.PicPayApi
+import com.picpay.desafio.android.R
+import com.picpay.desafio.android.presentation.model.User
+import com.picpay.desafio.android.presentation.userlist.adapter.UserListAdapter
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -38,22 +42,22 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             .build()
     }
 
-    private val service: PicPayService by lazy {
-        retrofit.create(PicPayService::class.java)
+    private val api: PicPayApi by lazy {
+        retrofit.create(PicPayApi::class.java)
     }
 
     override fun onResume() {
         super.onResume()
 
-        recyclerView = findViewById(R.id.recyclerView)
-        progressBar = findViewById(R.id.user_list_progress_bar)
+        recyclerView = findViewById(R.id.rvUserList)
+        progressBar = findViewById(R.id.pbUserList)
 
         adapter = UserListAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         progressBar.visibility = View.VISIBLE
-        service.getUsers()
+        api.getUsers()
             .enqueue(object : Callback<List<User>> {
                 override fun onFailure(call: Call<List<User>>, t: Throwable) {
                     val message = getString(R.string.error)
