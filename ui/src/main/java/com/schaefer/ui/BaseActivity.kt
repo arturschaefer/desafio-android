@@ -6,11 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 
 abstract class BaseActivity(
     @LayoutRes private val layoutId: Int
-) : AppCompatActivity() {
+) : AppCompatActivity(layoutId) {
 
     final override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState ?: Bundle())
-        setContentView(layoutId)
 
         setupObservers()
 

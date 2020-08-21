@@ -23,7 +23,7 @@ object LibsVersions {
 
     object Retrofit {
         const val core = "2.6.2"
-        const val converterGson = "2.6.2"
+        const val converterMoshi = "2.6.2"
     }
 
     object Coroutines {
@@ -36,6 +36,11 @@ object LibsVersions {
         const val gson = "2.8.5"
         const val lottie = "3.2.2"
         const val timber = "4.7.1"
+    }
+
+    object Images{
+        const val picasso = "2.71828"
+        const val circleImageView = "3.1.0"
     }
 
     object Test{

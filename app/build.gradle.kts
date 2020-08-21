@@ -50,9 +50,10 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 
 dependencies {
     implementation(project(":actions"))
+    implementation(project(":ui"))
+    implementation(project(":user"))
 
-    implementation(Dependencies.Androidx.core)
-    implementation(Dependencies.Androidx.appcompat)
+    api(Dependencies.Koin.core)
 }
 
 

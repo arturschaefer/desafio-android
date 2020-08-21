@@ -29,4 +29,7 @@ dependencies {
     api(Dependencies.Androidx.activity)
     api(Dependencies.Androidx.material)
     api(Dependencies.Androidx.constraintLayout)
+
+    api(Dependencies.Images.picasso)
+    api(Dependencies.Images.circleImage)
 }

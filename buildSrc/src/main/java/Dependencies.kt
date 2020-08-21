@@ -17,8 +17,8 @@ object Dependencies {
 
     object Retrofit {
         const val core = "com.squareup.retrofit2:retrofit:${LibsVersions.Retrofit.core}"
-        const val converterGson =
-            "com.squareup.retrofit2:converter-gson:${LibsVersions.Retrofit.converterGson}"
+        const val converterMoshi =
+            "com.squareup.retrofit2:converter-moshi:${LibsVersions.Retrofit.converterMoshi}"
     }
 
     object Coroutines {
@@ -60,6 +60,11 @@ object Dependencies {
     object Commons {
         const val lottie = "com.airbnb.android:lottie:${LibsVersions.General.lottie}"
         const val timber = "com.jakewharton.timber:timber:${LibsVersions.General.timber}"
+    }
+
+    object Images{
+        const val picasso = "com.squareup.picasso:picasso:${LibsVersions.Images.picasso}"
+        const val circleImage = "de.hdodenhof:circleimageview:${LibsVersions.Images.circleImageView}"
     }
 
     object Test{
