@@ -1,1 +1,3 @@
+include ':actions'
+include ':ui'
 include ':app'
