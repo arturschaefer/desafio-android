@@ -1,1 +1,4 @@
+include ':user'
+include ':actions'
+include ':ui'
 include ':app'
