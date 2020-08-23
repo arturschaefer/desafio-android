@@ -28,4 +28,6 @@ dependencies {
     implementation(Dependencies.Retrofit.core)
     implementation(Dependencies.Retrofit.converterMoshi)
     implementation(Dependencies.Koin.core)
+    implementation(Dependencies.Koin.viewModel)
+    implementation(Dependencies.Commons.timber)
 }
