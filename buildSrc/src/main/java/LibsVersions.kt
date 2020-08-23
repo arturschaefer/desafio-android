@@ -24,6 +24,7 @@ object LibsVersions {
     object Retrofit {
         const val core = "2.6.2"
         const val converterMoshi = "2.6.2"
+        const val moshiCondegen = "1.8.0"
     }
 
     object Coroutines {

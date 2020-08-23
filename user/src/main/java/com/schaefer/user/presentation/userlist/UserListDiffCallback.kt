@@ -3,14 +3,13 @@ package com.schaefer.user.presentation.userlist
 import androidx.recyclerview.widget.DiffUtil
 import com.schaefer.user.presentation.model.User
 
-//TODO remove this
 class UserListDiffCallback(
     private val oldList: List<User>,
     private val newList: List<User>
 ) : DiffUtil.Callback() {
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].username.equals(newList[newItemPosition].username)
+        return oldList[oldItemPosition].username == newList[newItemPosition].username
     }
 
     override fun getOldListSize(): Int {
@@ -22,6 +21,6 @@ class UserListDiffCallback(
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return true
+        return oldList[oldItemPosition] == newList[newItemPosition]
     }
 }

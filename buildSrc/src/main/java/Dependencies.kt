@@ -19,6 +19,8 @@ object Dependencies {
         const val core = "com.squareup.retrofit2:retrofit:${LibsVersions.Retrofit.core}"
         const val converterMoshi =
             "com.squareup.retrofit2:converter-moshi:${LibsVersions.Retrofit.converterMoshi}"
+        const val moshiCodegen =
+            "com.squareup.moshi:moshi-kotlin-codegen:${LibsVersions.Retrofit.moshiCondegen}"
     }
 
     object Coroutines {

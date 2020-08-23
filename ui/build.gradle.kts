@@ -29,6 +29,8 @@ dependencies {
     api(Dependencies.Androidx.activity)
     api(Dependencies.Androidx.material)
     api(Dependencies.Androidx.constraintLayout)
+    api(Dependencies.Androidx.navigationUI)
+    api(Dependencies.Androidx.navigationFragment)
 
     api(Dependencies.Images.picasso)
     api(Dependencies.Images.circleImage)

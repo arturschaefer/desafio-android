@@ -1,11 +1,15 @@
 package com.schaefer.user.presentation
 
+import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.schaefer.ui.BaseActivity
 import com.schaefer.user.R
 import com.schaefer.user.data.remote.source.PicPayAPI
 import com.schaefer.user.presentation.model.User
@@ -15,41 +19,16 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class UserActivity : AppCompatActivity(R.layout.activity_main) {
-    val picPayAPI: PicPayAPI by inject()
+class UserActivity : BaseActivity(R.layout.activity_main) {
+    override fun onViewCreated(savedInstanceState: Bundle?) {
+        super.onViewCreated(savedInstanceState)
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var progressBar: ProgressBar
-    private lateinit var adapter: UserListAdapter
-
-    override fun onResume() {
-        super.onResume()
-
-        recyclerView = findViewById(R.id.rvUserList)
-        progressBar = findViewById(R.id.pbUserList)
-
-        adapter = UserListAdapter()
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
-        progressBar.visibility = View.VISIBLE
-        picPayAPI.getPicPayService().getUsers()
-            .enqueue(object : Callback<List<User>> {
-                override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                    val message = getString(R.string.error)
-
-                    progressBar.visibility = View.GONE
-                    recyclerView.visibility = View.GONE
-
-                    Toast.makeText(this@UserActivity, message, Toast.LENGTH_SHORT)
-                        .show()
-                }
-
-                override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
-                    progressBar.visibility = View.GONE
-
-                    adapter.users = response.body()!!
-                }
-            })
+        val navController =
+            (supportFragmentManager.findFragmentById(R.id.fragmentNavHost) as NavHostFragment).navController
+        navController.apply {
+            setGraph(
+                R.navigation.user_navigation
+            )
+        }
     }
 }
