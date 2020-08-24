@@ -54,6 +54,7 @@ dependencies {
     implementation(project(":user"))
 
     api(Dependencies.Koin.core)
+    api(Dependencies.Commons.stetho)
 }
 
 
