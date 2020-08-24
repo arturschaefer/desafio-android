@@ -1,4 +1,4 @@
-package extensions
+package com.schaefer.ui.extensions
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package com.schaefer.user.presentation.state
+package com.schaefer.ui.state
 
 sealed class ViewState {
     object LOADING : ViewState()

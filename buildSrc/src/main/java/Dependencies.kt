@@ -12,7 +12,6 @@ object Dependencies {
         const val scope = "org.koin:koin-android-scope:${LibsVersions.Koin.scope}"
         const val viewModel = "org.koin:koin-android-viewmodel:${LibsVersions.Koin.viewmodel}"
         const val experimental = "org.koin:koin-androidx-ext:${LibsVersions.Koin.core}"
-        const val java = "org.koin:koin-java:${LibsVersions.Koin.core}"
     }
 
     object Retrofit {
@@ -66,7 +65,6 @@ object Dependencies {
     }
 
     object Commons {
-        const val lottie = "com.airbnb.android:lottie:${LibsVersions.General.lottie}"
         const val timber = "com.jakewharton.timber:timber:${LibsVersions.General.timber}"
         const val stetho = "com.facebook.stetho:stetho:${LibsVersions.General.stetho}"
     }

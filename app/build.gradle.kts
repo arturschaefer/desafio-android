@@ -62,7 +62,7 @@ dependencies {
 //
 //apply plugin: 'kotlin-android'
 //
-//apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-android-com.schaefer.ui.extensions'
 //
 //apply plugin: 'kotlin-kapt'
 //

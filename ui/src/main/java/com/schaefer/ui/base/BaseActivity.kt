@@ -1,4 +1,4 @@
-package com.schaefer.ui
+package com.schaefer.ui.base
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes
