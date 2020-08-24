@@ -1,6 +1,7 @@
 package com.schaefer.user.data.local.repository
 
 import com.schaefer.user.data.local.dao.UserDao
+import com.schaefer.user.data.local.entity.UserEntity
 import com.schaefer.user.data.remote.model.UserResponse
 import com.schaefer.user.domain.mapper.UserMapper
 import com.schaefer.user.domain.model.UserDomain
@@ -12,12 +13,8 @@ class UserLocalDataRepository(
     private val userDao: UserDao
 ) : UserLocalRepository {
 
-    override suspend fun getUsers(): Flow<List<UserDomain>> {
-        return userDao.getAllUsers().map { users ->
-            users.map { user ->
-                UserMapper.fromLocalData(user)
-            }
-        }
+    override suspend fun getUsers(): Flow<List<UserEntity>> {
+        return userDao.getAllUsers()
     }
 
     override suspend fun saveUsers(users: List<UserResponse>) {

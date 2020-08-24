@@ -7,7 +7,7 @@ import com.schaefer.user.data.remote.repository.UserRemoteDataRepository
 import com.schaefer.user.data.remote.source.PicPayAPI
 import com.schaefer.user.domain.repository.UserLocalRepository
 import com.schaefer.user.domain.repository.UserRemoteRepository
-import com.schaefer.user.domain.usecase.GetUsersCompose
+import com.schaefer.user.domain.usecase.SyncUsersCompose
 import com.schaefer.user.domain.usecase.GetUsersLocalUseCase
 import com.schaefer.user.domain.usecase.GetUsersRemoteUseCase
 import com.schaefer.user.domain.usecase.SaveUserUseCase
@@ -40,15 +40,14 @@ val userModule: Module = module {
     factory { GetUsersLocalUseCase(userLocalRepository = get()) }
     factory { SaveUserUseCase(userLocalRepository = get()) }
     factory {
-        GetUsersCompose(
+        SyncUsersCompose(
             getUsersRemoteUseCase = get(),
-            getUsersLocalUseCase = get(),
             saveUserUseCase = get()
         )
     }
     //endregion
 
     //region - ViewModels
-    viewModel { UserListViewModel(getUsersCompose = get()) }
+    viewModel { UserListViewModel(getUsersLocalUseCase = get(), syncUsersCompose = get()) }
     //endregion
 }

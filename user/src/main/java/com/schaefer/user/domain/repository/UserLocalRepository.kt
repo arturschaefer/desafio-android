@@ -6,6 +6,6 @@ import com.schaefer.user.domain.model.UserDomain
 import kotlinx.coroutines.flow.Flow
 
 interface UserLocalRepository {
-    suspend fun getUsers(): Flow<List<UserDomain>>
+    suspend fun getUsers(): Flow<List<UserEntity>>
     suspend fun saveUsers(users: List<UserResponse>)
 }
