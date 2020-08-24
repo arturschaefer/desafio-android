@@ -30,4 +30,8 @@ dependencies {
     implementation(Dependencies.Koin.core)
     implementation(Dependencies.Koin.viewModel)
     implementation(Dependencies.Commons.timber)
+
+    implementation(Dependencies.Room.roomRuntime)
+    implementation(Dependencies.Room.roomKtx)
+    kapt(Dependencies.Room.roomCompiler)
 }
