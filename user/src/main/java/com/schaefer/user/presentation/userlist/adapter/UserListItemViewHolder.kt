@@ -1,6 +1,7 @@
 package com.schaefer.user.presentation.userlist.adapter
 
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.schaefer.user.R
 import com.schaefer.user.presentation.model.User
@@ -22,13 +23,13 @@ class UserListItemViewHolder(
         Picasso.get()
             .load(user.img)
             .error(R.drawable.ic_round_account_circle)
-            .into(itemView.civUserImage, object : Callback {
+            .into(civUserImage, object : Callback {
                 override fun onSuccess() {
-                    pbUserImage.visibility = View.GONE
+                    pbUserImage.isVisible = false
                 }
 
                 override fun onError(e: Exception?) {
-                    pbUserImage.visibility = View.GONE
+                    pbUserImage.isVisible = false
                 }
             })
     }

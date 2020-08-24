@@ -1,6 +1,11 @@
 package com.schaefer.user.domain.repository
 
+import com.schaefer.user.data.local.entity.UserEntity
+import com.schaefer.user.data.remote.model.UserResponse
+import com.schaefer.user.domain.model.UserDomain
+import kotlinx.coroutines.flow.Flow
+
 interface UserLocalRepository {
-    fun getUsers()
-    fun saveUsers()
+    suspend fun getUsers(): Flow<List<UserEntity>>
+    suspend fun saveUsers(users: List<UserResponse>)
 }

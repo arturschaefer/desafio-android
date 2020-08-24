@@ -12,7 +12,6 @@ object Dependencies {
         const val scope = "org.koin:koin-android-scope:${LibsVersions.Koin.scope}"
         const val viewModel = "org.koin:koin-android-viewmodel:${LibsVersions.Koin.viewmodel}"
         const val experimental = "org.koin:koin-androidx-ext:${LibsVersions.Koin.core}"
-        const val java = "org.koin:koin-java:${LibsVersions.Koin.core}"
     }
 
     object Retrofit {
@@ -59,9 +58,15 @@ object Dependencies {
             "androidx.navigation:navigation-ui-ktx:${LibsVersions.Androidx.navigation}"
     }
 
+    object Room{
+        const val roomRuntime = "androidx.room:room-runtime:${LibsVersions.Room.room}"
+        const val roomCompiler = "androidx.room:room-compiler:${LibsVersions.Room.room}"
+        const val roomKtx = "androidx.room:room-ktx:${LibsVersions.Room.room}"
+    }
+
     object Commons {
-        const val lottie = "com.airbnb.android:lottie:${LibsVersions.General.lottie}"
         const val timber = "com.jakewharton.timber:timber:${LibsVersions.General.timber}"
+        const val stetho = "com.facebook.stetho:stetho:${LibsVersions.General.stetho}"
     }
 
     object Images{
@@ -87,6 +92,10 @@ object Dependencies {
             const val ext = "androidx.test.ext:junit:${LibsVersions.Test.androidx}"
             const val espressoCore =
                 "androidx.test.espresso:espresso-core:${LibsVersions.Test.espressoCore}"
+        }
+
+        object Room{
+            const val room = "androidx.room:room-testing:${LibsVersions.Room.room}"
         }
     }
 }

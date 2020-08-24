@@ -1,4 +1,4 @@
-package extensions
+package com.schaefer.ui.extensions
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
