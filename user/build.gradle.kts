@@ -14,6 +14,15 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
+
+    buildTypes {
+        getByName("debug") {
+            buildConfigField("String", "BASE_URL", project.property("BASE_URL") as String)
+        }
+        getByName("release") {
+            buildConfigField("String", "BASE_URL", project.property("BASE_URL") as String)
+        }
+    }
 }
 
 androidExtensions {
