@@ -12,6 +12,6 @@ data class UserEntity(
     val username: String
 ){
     companion object{
-        const val TABLE_NAME = "USER_LIST"
+        const val TABLE_NAME = "USERS"
     }
 }
