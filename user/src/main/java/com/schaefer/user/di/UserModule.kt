@@ -1,16 +1,11 @@
 package com.schaefer.user.di
 
+import com.schaefer.user.data.UserDataRepository
 import com.schaefer.user.data.local.database.UserDatabase
-import com.schaefer.user.data.local.repository.UserLocalDataRepository
 import com.schaefer.user.data.remote.api.PicPayService
-import com.schaefer.user.data.remote.repository.UserRemoteDataRepository
 import com.schaefer.user.data.remote.source.PicPayAPI
-import com.schaefer.user.domain.repository.UserLocalRepository
-import com.schaefer.user.domain.repository.UserRemoteRepository
-import com.schaefer.user.domain.usecase.SyncUsersCompose
-import com.schaefer.user.domain.usecase.GetUsersLocalUseCase
-import com.schaefer.user.domain.usecase.GetUsersRemoteUseCase
-import com.schaefer.user.domain.usecase.SaveUserUseCase
+import com.schaefer.user.domain.repository.UserRepository
+import com.schaefer.user.domain.usecase.GetUsersUseCase
 import com.schaefer.user.presentation.userlist.UserListViewModel
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
@@ -26,8 +21,7 @@ val userModule: Module = module {
     //endregion
 
     //region - Repositories
-    factory<UserRemoteRepository> { UserRemoteDataRepository(picPayService = get()) }
-    factory<UserLocalRepository> { UserLocalDataRepository(userDao = get()) }
+    factory<UserRepository> { UserDataRepository(picPayService = get(), userDao = get()) }
     //endregion
 
     //region - Room
@@ -36,18 +30,10 @@ val userModule: Module = module {
     //endregion
 
     //region - UseCases
-    factory { GetUsersRemoteUseCase(userRemoteRepository = get()) }
-    factory { GetUsersLocalUseCase(userLocalRepository = get()) }
-    factory { SaveUserUseCase(userLocalRepository = get()) }
-    factory {
-        SyncUsersCompose(
-            getUsersRemoteUseCase = get(),
-            saveUserUseCase = get()
-        )
-    }
+    factory { GetUsersUseCase(userRepository = get()) }
     //endregion
 
     //region - ViewModels
-    viewModel { UserListViewModel(getUsersLocalUseCase = get(), syncUsersCompose = get()) }
+    viewModel { UserListViewModel(getUsersUseCase = get()) }
     //endregion
 }

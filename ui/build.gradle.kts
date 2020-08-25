@@ -24,6 +24,8 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     api(Dependencies.Androidx.core)
+    api(Dependencies.Androidx.appcompat)
+    api(Dependencies.Androidx.appcompatResources)
     api(Dependencies.Androidx.annotation)
     api(Dependencies.Androidx.fragment)
     api(Dependencies.Androidx.activity)

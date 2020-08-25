@@ -25,7 +25,6 @@ class UserListFragment : BaseFragment(R.layout.fragment_user_list) {
         }
 
         userListViewModel.getUsers()
-        userListViewModel.syncUsers()
     }
 
     override fun setupObservers() {
