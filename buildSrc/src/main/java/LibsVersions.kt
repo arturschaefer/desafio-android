@@ -39,6 +39,14 @@ object LibsVersions {
     }
 
     object Test {
+        val okhttp_version = "4.3.1"
+        val core_ktx_test_version: String ="1.2.0"
+        val espresso_version: String = "3.1.1"
+        val test_runner_version: String = "1.1.1"
+        val koin_version: String = "2.0.1"
+        val core_testing_version: String = "2.1.0"
+        val mockito_kotlin_version: String = "2.1.0"
+        val mockito_version: String = "2.27.0"
         const val junit = "4.12"
         const val coreTesting = "2.1.0"
         const val espressoCore = "3.2.0"
