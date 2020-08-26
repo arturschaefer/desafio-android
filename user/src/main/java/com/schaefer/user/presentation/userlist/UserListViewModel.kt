@@ -4,18 +4,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.schaefer.user.domain.mapper.UserMapper
-import com.schaefer.user.domain.usecase.SyncUsersCompose
 import com.schaefer.user.presentation.model.User
 import com.schaefer.ui.state.ViewState
 import com.schaefer.ui.extensions.toLiveData
-import com.schaefer.user.domain.usecase.GetUsersLocalUseCase
+import com.schaefer.user.domain.usecase.GetUsersUseCase
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class UserListViewModel(
-    private val syncUsersCompose: SyncUsersCompose,
-    private val getUsersLocalUseCase: GetUsersLocalUseCase
+    private val getUsersUseCase: GetUsersUseCase
 ) : ViewModel() {
 
     private val _userList = MutableLiveData<List<User>>()
@@ -28,14 +26,17 @@ class UserListViewModel(
         _viewState.postValue(ViewState.LOADING)
         viewModelScope.launch {
             try {
-                getUsersLocalUseCase.execute()
-                .collect { users ->
-                    val userResult = users.map { user -> UserMapper.toPresentation(user) }
-                    _userList.postValue(userResult)
-                    if (userResult.isNotEmpty()) {
-                        _viewState.postValue(ViewState.LOADED)
+                getUsersUseCase.execute()
+                    .collect { users ->
+                        val userResult = users?.map { user -> UserMapper.fromDomainToPresentation(user) }
+                        Timber.d(userResult.toString())
+                        userResult?.let {
+                            _userList.postValue(userResult)
+                            if (userResult.isNotEmpty()) {
+                                _viewState.postValue(ViewState.LOADED)
+                            }
+                        }
                     }
-                }
             } catch (ex: Exception) {
                 _viewState.postValue(ViewState.ERROR)
                 Timber.d(ex.toString())
@@ -43,9 +44,9 @@ class UserListViewModel(
         }
     }
 
-    fun syncUsers(){
-        viewModelScope.launch {
-            syncUsersCompose.execute()
-        }
-    }
+//    fun syncUsers(){
+//        viewModelScope.launch {
+//            syncUsersCompose.execute()
+//        }
+//    }
 }

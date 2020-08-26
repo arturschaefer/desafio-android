@@ -6,7 +6,7 @@ import com.schaefer.user.domain.model.UserDomain
 import com.schaefer.user.presentation.model.User
 
 object UserMapper{
-    fun fromRemoteData(user: UserResponse): UserDomain{
+    fun fromLocalDataToDomain(user: UserEntity): UserDomain{
         return UserDomain(
             img = user.img,
             name = user.name,
@@ -15,16 +15,7 @@ object UserMapper{
         )
     }
 
-    fun fromLocalData(user: UserEntity): UserDomain{
-        return UserDomain(
-            img = user.img,
-            name = user.name,
-            username = user.username,
-            id = user.id
-        )
-    }
-
-    fun toLocalData(user: UserResponse): UserEntity{
+    fun fromRemoteToLocal(user: UserResponse): UserEntity{
         return UserEntity(
             img = user.img,
             name = user.name,
@@ -33,7 +24,7 @@ object UserMapper{
         )
     }
 
-    fun toPresentation(user: UserDomain): User{
+    fun fromDomainToPresentation(user: UserDomain): User{
         return User(
             img = user.img,
             name = user.name,
