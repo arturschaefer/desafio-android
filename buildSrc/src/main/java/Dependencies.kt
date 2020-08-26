@@ -3,10 +3,6 @@ object Dependencies {
         const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${LibsVersions.General.kotlin}"
     }
 
-    object TestLibs {
-        const val junit = "junit:junit:${LibsVersions.Test.junit}"
-    }
-
     object Koin {
         const val core = "org.koin:koin-android:${LibsVersions.Koin.core}"
         const val scope = "org.koin:koin-android-scope:${LibsVersions.Koin.scope}"
@@ -18,8 +14,6 @@ object Dependencies {
         const val core = "com.squareup.retrofit2:retrofit:${LibsVersions.Retrofit.core}"
         const val converterMoshi =
             "com.squareup.retrofit2:converter-moshi:${LibsVersions.Retrofit.converterMoshi}"
-        const val moshiCodegen =
-            "com.squareup.moshi:moshi-kotlin-codegen:${LibsVersions.Retrofit.moshiCondegen}"
     }
 
     object Coroutines {
@@ -33,17 +27,12 @@ object Dependencies {
         const val appcompat = "androidx.appcompat:appcompat:${LibsVersions.Androidx.appcompat}"
         const val appcompatResources =
             "androidx.appcompat:appcompat-resources:${LibsVersions.Androidx.appcompat}"
-        const val biometrics = "androidx.biometric:biometric:${LibsVersions.Androidx.biometrics}"
-        const val browser = "androidx.browser:browser:${LibsVersions.Androidx.browser}"
-        const val cardView =
-            "androidx.cardview:cardview:${LibsVersions.Androidx.cardView}"
         const val constraintLayout =
             "androidx.constraintlayout:constraintlayout:${LibsVersions.Androidx.constraintLayout}"
         const val core = "androidx.core:core-ktx:${LibsVersions.Androidx.core}"
         const val material = "com.google.android.material:material:${LibsVersions.Androidx.material}"
         const val recyclerView =
             "androidx.recyclerview:recyclerview:${LibsVersions.Androidx.recyclerView}"
-        const val securityCrypto = "androidx.security:security-crypto:${LibsVersions.Androidx.securityCrypto}"
         const val swipeRefreshLayout =
             "androidx.swiperefreshlayout:swiperefreshlayout:${LibsVersions.Androidx.swipeRefreshLayout}"
         const val fragment =
@@ -76,7 +65,6 @@ object Dependencies {
 
     object Test{
         const val junit = "junit:junit:${LibsVersions.Test.junit}"
-        const val mockk = "io.mockk:mockk:${LibsVersions.Test.mockk}"
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${LibsVersions.Coroutines.core}"
         const val koin = "org.koin:koin-test:${LibsVersions.Koin.core}"
 
