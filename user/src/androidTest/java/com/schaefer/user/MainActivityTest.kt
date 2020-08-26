@@ -1,4 +1,4 @@
-package com.picpay.desafio.android
+package com.schaefer.user
 
 import androidx.lifecycle.Lifecycle
 import androidx.test.core.app.launchActivity
