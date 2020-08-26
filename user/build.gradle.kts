@@ -65,5 +65,8 @@ dependencies {
     androidTestImplementation ("androidx.test:runner:${LibsVersions.Test.test_runner_version}")
     androidTestImplementation ("androidx.test.espresso:espresso-core:${LibsVersions.Test.espresso_version}")
     androidTestImplementation ("androidx.test:core-ktx:${LibsVersions.Test.core_ktx_test_version}")
+    testImplementation(Dependencies.Test.Mockk.core)
+    testImplementation(Dependencies.Test.Mockk.android)
+    testImplementation(Dependencies.Test.coroutines)
 
 }
