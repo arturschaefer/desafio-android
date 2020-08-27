@@ -10,6 +10,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_user.*
 import kotlinx.android.synthetic.main.item_user.view.*
+import timber.log.Timber
 
 class UserListItemViewHolder(
     itemView: View
@@ -20,18 +21,28 @@ class UserListItemViewHolder(
         tvUsername.text = user.username
         pbUserImage.visibility = View.VISIBLE
 
-        Picasso.get()
-            .load(user.img)
-            .error(R.drawable.ic_round_account_circle)
-            .into(civUserImage, object : Callback {
-                override fun onSuccess() {
-                    pbUserImage.isVisible = false
-                }
+        try {
+            Picasso.get()
+                .load(user.img)
+                .error(R.drawable.ic_round_account_circle)
+                .into(civUserImage, callBack)
+        } catch (ex: Exception) {
+            Picasso.get()
+                .load(R.drawable.ic_round_account_circle)
+                .placeholder(R.drawable.ic_round_account_circle)
+                .into(civUserImage, callBack)
+            Timber.e(ex)
+        }
+    }
 
-                override fun onError(e: Exception?) {
-                    pbUserImage.isVisible = false
-                }
-            })
+    val callBack = object : Callback {
+        override fun onSuccess() {
+            pbUserImage.isVisible = false
+        }
+
+        override fun onError(e: Exception?) {
+            pbUserImage.isVisible = false
+        }
     }
 
     override val containerView: View?

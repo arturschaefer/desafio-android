@@ -28,7 +28,9 @@ class UserListViewModel(
             try {
                 getUsersUseCase.execute()
                     .collect { users ->
-                        val userResult = users?.map { user -> UserMapper.fromDomainToPresentation(user) }
+                        val userResult = users?.map { user ->
+                            UserMapper.fromDomainToPresentation(user)
+                        }
                         Timber.d(userResult.toString())
                         userResult?.let {
                             _userList.postValue(userResult)

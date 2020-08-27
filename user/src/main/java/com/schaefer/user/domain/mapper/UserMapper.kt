@@ -17,10 +17,10 @@ object UserMapper{
 
     fun fromRemoteToLocal(user: UserResponse): UserEntity{
         return UserEntity(
-            img = user.img,
-            name = user.name,
-            username = user.username,
-            id = user.id
+            img = user.img ?: "",
+            name = user.name ?: "",
+            username = user.username ?: "",
+            id = user.id ?: 0L
         )
     }
 
