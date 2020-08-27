@@ -4,6 +4,7 @@ import android.content.Context
 import com.schaefer.user.data.local.dao.UserDao
 import com.schaefer.user.data.local.entity.UserEntity
 import com.schaefer.user.di.userModule
+import com.schaefer.user.test.BaseTest
 import com.schaefer.user.test.UserDummies
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
@@ -22,26 +23,23 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
+import org.koin.core.module.Module
 import org.koin.test.KoinTest
 import org.koin.test.inject
 import java.io.IOException
 
 @RunWith(JUnit4::class)
-class SimpleEntityReadWriteTest : KoinTest {
-    private val context = mockk<Context>()
-
+class SimpleEntityReadWriteTest : BaseTest() {
     private val userDao: UserDao by inject()
     private val db: UserDatabase by inject()
 
     private val testDispatcher = TestCoroutineDispatcher()
     private val testScope = TestCoroutineScope(testDispatcher)
+    override val modules: List<Module> = arrayListOf(userModule)
 
     @Before
-    fun createDb() {
-        startKoin {
-            androidContext(context)
-            modules(userModule)
-        }
+    override fun setUp() {
+        super.setUp()
         Dispatchers.setMain(testDispatcher)
     }
 
