@@ -31,9 +31,7 @@ class UserDataRepository(
 
     override suspend fun saveLocalUsers(users: List<UserResponse>) {
         Timber.d("saveLocalUsers")
-        for (user in users) {
-            userDao.save(UserMapper.fromRemoteToLocal(user))
-        }
+        userDao.save(*users.map { UserMapper.fromRemoteToLocal(it) }.toTypedArray())
     }
 
     @Throws

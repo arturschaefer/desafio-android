@@ -6,12 +6,12 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = UserEntity.TABLE_NAME)
 data class UserEntity(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     var id: Long,
-    val img: String,
-    val name: String,
+    val img: String = "",
+    val name: String = "",
     @ColumnInfo(name = COLUMN_USER_NAME)
-    val username: String
+    val username: String = ""
 ){
     companion object{
         const val TABLE_NAME = "USERS"
