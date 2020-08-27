@@ -43,10 +43,4 @@ class UserListViewModel(
             }
         }
     }
-
-//    fun syncUsers(){
-//        viewModelScope.launch {
-//            syncUsersCompose.execute()
-//        }
-//    }
 }

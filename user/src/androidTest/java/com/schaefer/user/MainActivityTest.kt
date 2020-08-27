@@ -4,10 +4,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.test.core.app.launchActivity
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.platform.app.InstrumentationRegistry
-import com.schaefer.user.presentation.MainActivity
+import com.schaefer.user.presentation.UserActivity
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -23,7 +22,7 @@ class MainActivityTest {
 
     @Test
     fun shouldDisplayTitle() {
-        launchActivity<MainActivity>().apply {
+        launchActivity<UserActivity>().apply {
             val expectedTitle = context.getString(R.string.title)
 
             moveToState(Lifecycle.State.RESUMED)
@@ -45,8 +44,12 @@ class MainActivityTest {
 
         server.start(serverPort)
 
-        launchActivity<MainActivity>().apply {
-            // TODO("validate if list displays items returned by server")
+        launchActivity<UserActivity>().apply {
+            RecyclerViewMatchers.checkRecyclerViewItem(
+                resId = R.id.rvUserList,
+                position = 1,
+                withMatcher = withId(R.id.tvUsername)
+            )
         }
 
         server.close()
