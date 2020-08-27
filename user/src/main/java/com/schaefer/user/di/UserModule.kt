@@ -7,6 +7,7 @@ import com.schaefer.user.data.remote.source.PicPayAPI
 import com.schaefer.user.domain.repository.UserRepository
 import com.schaefer.user.domain.usecase.GetUsersUseCase
 import com.schaefer.user.presentation.userlist.UserListViewModel
+import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
@@ -21,7 +22,13 @@ val userModule: Module = module {
     //endregion
 
     //region - Repositories
-    factory<UserRepository> { UserDataRepository(picPayService = get(), userDao = get()) }
+    factory<UserRepository> {
+        UserDataRepository(
+            picPayService = get(),
+            userDao = get(),
+            dispatcher = Dispatchers.IO
+        )
+    }
     //endregion
 
     //region - Room
